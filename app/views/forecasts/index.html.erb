@@ -1,0 +1,19 @@
+<h1>Weather Today</h1>
+
+<%= form_tag "/", method: :get do %>
+  <%= text_field_tag :city, nil, placeholder: "City" %>
+  <%= text_field_tag :state, nil, placeholder: "State" %>
+  <%= submit_tag "Submit" %>
+<% end %>
+
+<h2><%= @city %>,<%= @state %></h2>
+
+<%= image_tag @image %>
+<h2>Temp: <%= @temp %>°<%= @temp_unit %></h2>
+
+<h2>5-Day Forecast</h2>
+<% @forecasts.each do |forecast| %>
+  <h2><%= forecast["date"] %> - <%= forecast["day"] %> - <%= forecast["text"] %></h2>
+  <h3>High: <%= forecast["high"] %></h3>
+  <h3>Low: <%= forecast["low"] %></h3>
+<% end %>
